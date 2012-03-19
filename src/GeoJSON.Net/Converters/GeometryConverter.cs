@@ -27,7 +27,15 @@ namespace GeoJSON.Net.Converters
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             // ToDo: implement
-            throw new NotImplementedException();
+            writer.Formatting = Formatting.Indented;
+
+            writer.WriteStartObject();
+
+            writer.WritePropertyName("Geometry");
+
+            writer.WriteValue("point");
+
+            writer.WriteEndObject();
         }
 
         /// <summary>

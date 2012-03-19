@@ -7,11 +7,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using GeoJSON.Net.Converters;
+
 namespace GeoJSON.Net.Feature
 {
     using System.Collections.Generic;
 
-    using GeoJSON.Net.Converters;
     using GeoJSON.Net.Geometry;
 
     using Newtonsoft.Json;
@@ -48,9 +49,9 @@ namespace GeoJSON.Net.Feature
         /// The geometry.
         /// </value>
         [JsonProperty(PropertyName = "geometry", Required = Required.AllowNull)]
-        [JsonConverter(typeof(GeometryConverter))]
+        //[JsonConverter(typeof(GeometryConverter))]
         public IGeometryObject Geometry { get; set; }
-        
+
         /// <summary>
         /// Gets the properties.
         /// </summary>

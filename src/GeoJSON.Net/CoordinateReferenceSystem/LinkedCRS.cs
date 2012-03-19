@@ -29,14 +29,14 @@ namespace GeoJSON.Net.CoordinateReferenceSystem
                 throw new ArgumentNullException("href");
             }
 
-            if (string.IsNullOrWhiteSpace(href))
+            if (string.IsNullOrEmpty(href))
             {
                 throw new ArgumentOutOfRangeException("href", "May not be empty");
             }
 
             this.Properties = new Dictionary<string, object> { { "href", href } };
 
-            if (!string.IsNullOrWhiteSpace(type))
+            if (!string.IsNullOrEmpty(type))
             {
                 this.Properties.Add("type", type);
             }
@@ -49,7 +49,8 @@ namespace GeoJSON.Net.CoordinateReferenceSystem
         /// </summary>
         /// <param name="href">The mandatory <see cref="http://geojson.org/geojson-spec.html#linked-crs">href</see> member must be a dereferenceable URI.</param>
         /// <param name="type">The optional type member will be put in the properties Dictionary as specified in the <see cref="http://geojson.org/geojson-spec.html#linked-crs">GeoJSON spec</see>.</param>
-        public LinkedCRS(Uri href, string type = "") : this(href.ToString(), type)
+        public LinkedCRS(Uri href, string type = "")
+            : this(href.ToString(), type)
         {
         }
     }

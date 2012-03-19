@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using Newtonsoft.Json.Converters;
+
 namespace GeoJSON.Net
 {
     using Newtonsoft.Json;
@@ -24,6 +26,7 @@ namespace GeoJSON.Net
         /// The type of the object.
         /// </value>
         [JsonProperty(PropertyName = "type", Required = Required.Always)]
+        [JsonConverter(typeof(StringEnumConverter))]
         public GeoJSONObjectType Type { get; internal set; }
 
         /// <summary>
