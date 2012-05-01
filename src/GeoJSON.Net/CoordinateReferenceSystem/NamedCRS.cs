@@ -32,7 +32,7 @@ namespace GeoJSON.Net.CoordinateReferenceSystem
                 throw new ArgumentNullException("name");
             }
 
-            if (string.IsNullOrWhiteSpace(name))
+            if (string.IsNullOrEmpty(name))
             {
                 throw new ArgumentOutOfRangeException("name", "May not be empty");
             }

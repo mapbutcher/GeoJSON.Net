@@ -12,7 +12,7 @@ namespace GeoJSON.Net.Geometry
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    
+
     using Newtonsoft.Json;
 
     /// <summary>
@@ -43,14 +43,38 @@ namespace GeoJSON.Net.Geometry
                 throw new ArgumentOutOfRangeException("linearRings", "All elements must be closed LineStrings with 4 or more positions (see GeoJSON spec at 'http://geojson.org/geojson-spec.html#linestring').");
             }
 
-            this.Coordinates = linearRings;
+            //this.Coordinates = linearRings;
+            this.Type = GeoJSONObjectType.Polygon;
+        }
+
+        //SH - Added to remove the reqt to use LineString class causes issues with the output i.e. it includes the type linestring as a sub type of polygon
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Polygon"/> class.
+        /// </summary>
+        /// <param name="coordinates">The coordinates.</param>
+        public Polygon(List<List<List<double>>> coordinates)
+        {
+            //todo - implement linear ring checks
+
+            this.Coordinates = coordinates;
             this.Type = GeoJSONObjectType.Polygon;
         }
 
         /// <summary>
         /// Gets the list of points outlining this Polygon.
         /// </summary>
+        ///[JsonProperty(PropertyName = "coordinates", Required = Required.Always)]
+        ///public List<LineString> Coordinates { get; private set; }
+
+        //SH _ Added - having a property as a linestring causes issues with the output i.e. it includes the type linestring as a sub type of polygon
+        /// <summary>
+        /// Gets the Positions.
+        /// </summary>
+        /// <value>The Positions.</value>
         [JsonProperty(PropertyName = "coordinates", Required = Required.Always)]
-        public List<LineString> Coordinates { get; private set; }
+        //[JsonConverter(typeof(PositionConverter))]
+        public List<List<List<double>>> Coordinates { get; set; }
+
+
     }
 }

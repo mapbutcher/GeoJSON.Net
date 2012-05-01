@@ -7,14 +7,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+
 namespace GeoJSON.Net.Geometry
 {
     using System;
     using System.Collections.Generic;
-
-    using GeoJSON.Net.Converters;
-
     using Newtonsoft.Json;
+
+
 
     /// <summary>
     /// In geography, a point refers to a Position on a map, expressed in latitude and longitude.
@@ -22,6 +22,7 @@ namespace GeoJSON.Net.Geometry
     /// <seealso cref="http://geojson.org/geojson-spec.html#point"/>
     public class Point : GeoJSONObject, IGeometryObject
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Point"/> class.
         /// </summary>
@@ -33,7 +34,23 @@ namespace GeoJSON.Net.Geometry
                 throw new ArgumentNullException("coordinates");
             }
 
-            this.Coordinates = new List<IPosition> { coordinates };
+            //this.Coordinates = new List<IPosition> { coordinates };
+            this.Type = GeoJSONObjectType.Point;
+        }
+
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Point"/> class.
+        /// </summary>
+        /// <param name="coordinates">The Position.</param>
+        public Point(List<double> coordinates)
+        {
+            if (coordinates == null)
+            {
+                throw new ArgumentNullException("coordinates");
+            }
+
+            this.Coordinates = coordinates;
             this.Type = GeoJSONObjectType.Point;
         }
 
@@ -42,7 +59,7 @@ namespace GeoJSON.Net.Geometry
         /// </summary>
         /// <value>The Coordinates.</value>
         [JsonProperty(PropertyName = "coordinates", Required = Required.Always)]
-        [JsonConverter(typeof(PositionConverter))]
-        public List<IPosition> Coordinates { get; private set; }
+        //[JsonConverter(typeof(PositionConverter))]
+        public List<double> Coordinates { get; private set; }
     }
 }

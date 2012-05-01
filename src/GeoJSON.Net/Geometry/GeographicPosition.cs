@@ -50,12 +50,12 @@ namespace GeoJSON.Net.Geometry
                 throw new ArgumentNullException("longitude");
             }
 
-            if (string.IsNullOrWhiteSpace(latitude))
+            if (string.IsNullOrEmpty(latitude))
             {
                 throw new ArgumentOutOfRangeException("latitude", "May not be empty.");
             }
 
-            if (string.IsNullOrWhiteSpace(longitude))
+            if (string.IsNullOrEmpty(longitude))
             {
                 throw new ArgumentOutOfRangeException("longitude", "May not be empty.");
             }
@@ -95,7 +95,7 @@ namespace GeoJSON.Net.Geometry
         /// <summary>
         /// Prevents a default instance of the <see cref="GeographicPosition"/> class from being created.
         /// </summary>
-        private GeographicPosition()
+        public GeographicPosition()
         {
             this.Coordinates = new double?[3];
         }

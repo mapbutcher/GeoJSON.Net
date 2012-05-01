@@ -29,7 +29,15 @@ namespace GeoJSON.Net.Converters
         /// <param name="writer">The <see cref="T:Newtonsoft.Json.JsonWriter"/> to write to.</param><param name="value">The value.</param><param name="serializer">The calling serializer.</param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            writer.WriteStartObject();
+
+            writer.WritePropertyName("Position");
+
+            writer.WriteValue("foo");
+
+            writer.WriteEndObject();
+
         }
 
         /// <summary>
@@ -46,7 +54,7 @@ namespace GeoJSON.Net.Converters
             {
                 throw new ParsingException(
                     string.Format(
-                        "Point geometry coordinates could not be parsed. Expected something like '[-122.428938,37.766713]' ([lon,lat]), what we received however was: {0}", 
+                        "Point geometry coordinates could not be parsed. Expected something like '[-122.428938,37.766713]' ([lon,lat]), what we received however was: {0}",
                         coordinates));
             }
 
@@ -74,7 +82,7 @@ namespace GeoJSON.Net.Converters
         /// </returns>
         public override bool CanConvert(Type objectType)
         {
-            return objectType == typeof(GeographicPosition);
+            return objectType == typeof(List<IPosition>);
         }
     }
 }

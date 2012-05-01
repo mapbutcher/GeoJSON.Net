@@ -16,7 +16,7 @@ namespace GeoJSON.Net
     {
         /// <summary>
         /// Defines the <see cref="http://geojson.org/geojson-spec.html#point">Point</see> type.
-        /// </summary>
+        /// </summary>     
         Point,
 
         /// <summary>
