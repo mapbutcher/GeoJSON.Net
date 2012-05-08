@@ -36,6 +36,7 @@ namespace GeoJSON.Net
         /// The Coordinate Reference System Objects.
         /// </value>
         [JsonProperty(PropertyName = "crs", Required = Required.AllowNull)]
+        [JsonIgnore]
         public CoordinateReferenceSystem.ICRSObject CRS { get; set; }
 
         /// <summary>
@@ -49,6 +50,7 @@ namespace GeoJSON.Net
         /// system of the GeoJSON object of which it is a member.
         /// </value>
         [JsonProperty(PropertyName = "bbox", Required = Required.AllowNull)]
+        [JsonIgnore]
         public double[] BoundingBoxes { get; set; }
     }
 }
